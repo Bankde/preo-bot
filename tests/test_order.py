@@ -7,7 +7,7 @@ parentdir = os.path.dirname(currentdir)
 # Include paths for module search
 sys.path.insert(0, os.path.join(parentdir, 'bot'))
 from order import (
-    OrderPool, OrderList, Order
+    OrderPool, OrderBag
 )
 
 ###########################
@@ -21,21 +21,14 @@ def test_order_pool_init():
     assert isinstance(order_pool, OrderPool)
 
 ###########################
-# OrderList test cases
+# OrderBag test cases
 ###########################
 
 
-def test_order_list_init():
-    order_list = OrderList()
-    assert order_list != None
-    assert isinstance(order_list, OrderList)
-
-###########################
-# Order test cases
-###########################
-
-
-def test_order_init():
-    order = Order()
-    assert order != None
-    assert isinstance(order, Order)
+def test_order_bag_init():
+    bag_id = 'mock_id'
+    order_bag = OrderBag(bag_id)
+    assert order_bag != None
+    assert isinstance(order_bag, OrderBag)
+    assert order_bag.id == bag_id
+    assert len(order_bag.df) == 0
